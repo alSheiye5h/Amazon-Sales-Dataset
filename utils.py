@@ -1,3 +1,5 @@
+import random
+
 def get_stars(star_str):
     stars = 0
     if star_str.lower() == "one":
@@ -11,3 +13,6 @@ def get_stars(star_str):
     elif star_str.lower() == "five":
         stars = 5
     return stars
+
+def get_href(product):
+    return f"{product.title.replace(' ', '-')}_{product.idx}"
