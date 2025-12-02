@@ -36,6 +36,4 @@ def get_book_type(title, scraper):
     response = scraper.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     type = soup.find(class_="breadcrumb").contents[5].a.text
-    type = soup.find(class_="breadcrumb")
-    print(type)
     return type
