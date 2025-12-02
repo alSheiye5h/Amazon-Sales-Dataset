@@ -17,7 +17,7 @@ def scrap_page(url, scraper):
         price = float(product.find(class_="price_color").text[2:])
         in_stock = 0
         if [1 for r in product.find(class_="instock availability").i.get('class') if r == 'icon-ok'][0] == 1 : in_stock = 1
-        type_ = get_book_type(product, scraper)
+        type_ = get_book_type({"title": title, "id": idx}, scraper)
         data = {
             "id": idx,
             "image": image,
@@ -30,10 +30,12 @@ def scrap_page(url, scraper):
         products_list.append(data)
     return products_list
 
-def get_book_type(product, scraper):
-    href = get_href(product)
+def get_book_type(title, scraper):
+    href = get_href(title)
     url = f"https://books.toscrape.com/{href}"
     response = scraper.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     type = soup.find(class_="breadcrumb").contents[5].a.text
+    type = soup.find(class_="breadcrumb")
+    print(type)
     return type
