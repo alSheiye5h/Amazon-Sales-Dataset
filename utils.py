@@ -15,4 +15,6 @@ def get_stars(star_str):
     return stars
 
 def get_href(product):
-    return f"/catalogue/{product.title.replace(' ', '-')}_{product.id}/index.html"
+    title = product["title"]
+    id = product["id"]
+    return f"/catalogue/{title.replace(' ', '-')}_{id}/index.html"
