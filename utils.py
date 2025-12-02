@@ -18,3 +18,4 @@ def get_href(product):
     title = product["title"]
     id = product["id"]
     return f"/catalogue/{title.replace(' ', '-')}_{id}/index.html"
+
